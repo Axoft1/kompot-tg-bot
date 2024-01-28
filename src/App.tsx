@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import './App.css';
+import './App.scss';
 import Header from './components/header';
 import { useTelegram } from './hooks/useTelegram';
 import Button from './components/button';
