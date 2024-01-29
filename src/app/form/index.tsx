@@ -3,7 +3,7 @@ import './style.scss'
 import { useTelegram } from "../../hooks/useTelegram"
 function Form() {
   const { tg } = useTelegram()
-  const [city, setCity] = useState('')
+  const [city, setCity] = useState('moscow')
   const [address, setAddress] = useState('')
 
   const onChangeCity = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -24,7 +24,7 @@ function Form() {
     } else {
       tg.MainButton.show()
     }
-  }, [])
+  }, [address, city, tg.MainButton])
   return (
     <div className="form">
       <span>Город</span>
