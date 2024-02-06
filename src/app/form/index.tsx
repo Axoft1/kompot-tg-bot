@@ -16,12 +16,14 @@ function Form() {
   }
   const onSendData = useCallback(() => {
     const data = { city, address }
+    console.log(data);
+    
     tg.sendData(JSON.stringify(data))
   }, [address, city, tg])
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData)
-    return () => { tg.onEvent('mainButtonClicked', onSendData) }
+    return () => { tg.offEvent('mainButtonClicked', onSendData) }
   }, [onSendData, tg])
 
   useEffect(() => {
@@ -29,7 +31,7 @@ function Form() {
       text: 'Отправить'
     })
   }, [tg.MainButton])
-  useEffect(() => {
+  useEffect(() => {        
     if (!city || !address) {
       tg.MainButton.hide()
     } else {
